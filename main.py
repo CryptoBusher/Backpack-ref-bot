@@ -11,6 +11,7 @@ from multiprocessing.dummy import Pool
 
 from loguru import logger
 from pyfiglet import Figlet
+from user_agent import generate_user_agent
 from random_username.generate import generate_username
 from seleniumwire import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -44,6 +45,7 @@ class BackPackAccount:
         self.password = self.__generate_password()
         self.driver = None
         self.seed = None
+        self.useragent = self.__generate_useragent()
 
         if not self.username:
             self.__update_username()
@@ -56,8 +58,14 @@ class BackPackAccount:
         pass_length = randint(10, 15)
         return "".join(sample(ascii_lowercase + ascii_uppercase + digits, pass_length))
 
+    @staticmethod
+    def __generate_useragent() -> str:
+        return generate_user_agent(navigator="chrome", device_type="desktop")
+
     def __create_driver(self):
         options = webdriver.ChromeOptions()
+        options.add_argument(f'--user-agent={self.useragent}')
+        options.page_load_strategy = 'eager'
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option("useAutomationExtension", False)
