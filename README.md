@@ -7,7 +7,7 @@ Script helps in farming referrals in Backpack project. Supports multithreading, 
 1. Download this repository
 2. Install [python v 3.10.9](https://www.python.org/downloads/release/python-3109/)
 3. Install all dependencies by typing 'pip install -r requirements.txt' in cmd (cd to the project directory first)
-4. [Check](chrome://version/) your Chrome version (for example 110)
+4. Check your Chrome version by navigating to chrome://version/ (for example 110)
 5. [Download](https://chromedriver.chromium.org/downloads) chromedriver based on your Chrome version
 6. Extract 'chromedriver.exe' to the project repository
 7. Open 'config.py' file using any text editor
