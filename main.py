@@ -122,12 +122,12 @@ class BackPackAccount:
         seed = ''
         for _i in range(8):
             word_input = wait.until(EC.presence_of_element_located((By.XPATH, f'//input[@id=":r{_i + 2}:"]')))
-            seed += f' {word_input.get_property("value")}'
+            seed += f'{word_input.get_property("value")} '
         for _i in ['a', 'b', 'c', 'd']:
             word_input = wait.until(EC.presence_of_element_located((By.XPATH, f'//input[@id=":r{_i}:"]')))
-            seed += f' {word_input.get_property("value")}'
+            seed += f'{word_input.get_property("value")} '
 
-        self.seed = seed
+        self.seed = seed.rstrip()
 
         wait.until(EC.presence_of_element_located((By.XPATH, "//input[@type='checkbox']"))).click()
         wait.until(EC.presence_of_element_located((By.XPATH, "//*[text()='Next']"))).click()
