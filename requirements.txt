@@ -1,0 +1,4 @@
+loguru~=0.6.0
+pyfiglet~=0.8.post1
+selenium~=4.8.2
+selenium-wire==5.1.0
